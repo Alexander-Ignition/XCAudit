@@ -1,7 +1,10 @@
 name: 'XCAudit'
 description: 'Xcode logs formatter for GitHub Actions'
+branding:
+  icon: 'alert-triangle'
+  color: 'yellow'
 runs:
-  using: "composite"
+  using: 'composite'
   steps:
     - name: build and install xcaudit
       run: |
