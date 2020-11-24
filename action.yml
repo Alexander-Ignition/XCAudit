@@ -6,7 +6,7 @@ branding:
 runs:
   using: 'composite'
   steps:
-    - name: build and install xcaudit
+    - name: download and install xcaudit
       run: |
         curl -sL "https://github.com/Alexander-Ignition/XCAudit/releases/download/0.1.1/xcaudit-mac.zip" | tar zx
         install xcaudit /usr/local/bin
