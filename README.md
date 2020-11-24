@@ -6,6 +6,10 @@
 
 Audit Xcode build logs for GitHub Actions
 
+[Example PR](https://github.com/Alexander-Ignition/XCAudit-Example/pull/2/files)
+
+![test-fail](Images/test-fail.png)
+
 ## Requirements
 
 - Swift 5.3
