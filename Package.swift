@@ -17,15 +17,13 @@ let package = Package(
             targets: ["XCAuditKit"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/swift-argument-parser", from: "0.3.0"),
+        // Dependencies declare other packages that this package depends on.
+        // .package(url: /* package url */, from: "1.0.0"),
     ],
     targets: [
         .target(
             name: "XCAudit",
-            dependencies: [
-                .product(name: "ArgumentParser", package: "swift-argument-parser"),
-                .target(name: "XCAuditKit")
-            ]),
+            dependencies: ["XCAuditKit"]),
         .target(
             name: "XCAuditKit",
             dependencies: []),
