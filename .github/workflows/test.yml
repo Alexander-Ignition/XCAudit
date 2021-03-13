@@ -1,0 +1,26 @@
+name: Test
+on:
+  push:
+    branches:
+      - main
+    tags-ignore:
+      - '**'
+  pull_request:
+    branches:
+      - '**'
+
+jobs:
+  test:
+    name: Run tests
+    runs-on: macOS-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Toolchain
+        run: |
+          xcodebuild -version
+          swift build --version
+        shell: bash
+      - name: Build and test
+        run: swift test --enable-code-coverage --disable-automatic-resolution
+        shell: bash
