@@ -1,0 +1,20 @@
+name: Build
+on: workflow_dispatch
+
+jobs:
+  test:
+    name: Run tests
+    runs-on: macOS-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Toolchain
+        run: |
+          xcodebuild -version
+          swift build --version
+        shell: bash
+      - name: Build universal binary
+        run: | 
+          swift build -c release --disable-sandbox --arch arm64 --arch x86_64
+          swift build -c release --disable-sandbox --arch arm64 --arch x86_64 --show-bin-path
+        shell: bash
