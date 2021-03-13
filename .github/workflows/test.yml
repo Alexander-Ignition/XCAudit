@@ -21,9 +21,6 @@ jobs:
           xcodebuild -version
           swift build --version
         shell: bash
-      - name: Build
-        run: swift build --disable-automatic-resolution
-        shell: bash
-      - name: Test
-        run: swift test --enable-code-coverage 
+      - name: Build and test
+        run: swift test --enable-code-coverage --disable-automatic-resolution
         shell: bash
