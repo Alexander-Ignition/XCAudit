@@ -17,8 +17,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Build
-        run: time swift build -c release --disable-sandbox
+        run: time swift build --disable-automatic-resolution
         shell: bash
       - name: Test
-        run: swift test --enable-code-coverage --disable-automatic-resolution
+        run: swift test --enable-code-coverage 
         shell: bash
