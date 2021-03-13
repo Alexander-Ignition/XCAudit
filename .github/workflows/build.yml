@@ -3,7 +3,7 @@ on: workflow_dispatch
 
 jobs:
   test:
-    name: Run tests
+    name: Run build
     runs-on: macOS-latest
     steps:
       - name: Checkout
@@ -13,8 +13,9 @@ jobs:
           xcodebuild -version
           swift build --version
         shell: bash
-      - name: Build universal binary
+      - id: build
+        name: Build universal binary
         run: | 
           swift build -c release --disable-sandbox --arch arm64 --arch x86_64
-          swift build -c release --disable-sandbox --arch arm64 --arch x86_64 --show-bin-path
+          lipo -info "$(swift build -c release --disable-sandbox --arch arm64 --arch x86_64 --show-bin-path)/xcaudit"
         shell: bash
