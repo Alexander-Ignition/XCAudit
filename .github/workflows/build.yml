@@ -13,9 +13,14 @@ jobs:
           xcodebuild -version
           swift build --version
         shell: bash
-      - id: build
-        name: Build universal binary
+      - name: Build universal binary
+        id: build
         run: | 
-          swift build -c release --disable-sandbox --arch arm64 --arch x86_64
-          lipo -info "$(swift build -c release --disable-sandbox --arch arm64 --arch x86_64 --show-bin-path)/xcaudit"
+          swift_build="swift build -c release --disable-sandbox --arch arm64 --arch x86_64"
+          $swift_build
+          bin_path=$($swift_build --show-bin-path)  
+          echo "::set-output name=bin_path::$bin_path/xcaudit"
+        shell: bash
+      - name: Binary info
+        run: lipo -info ${{ steps.build.outputs.bin_path }}
         shell: bash
