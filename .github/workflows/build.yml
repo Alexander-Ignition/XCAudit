@@ -24,3 +24,8 @@ jobs:
       - name: Binary info
         run: lipo -info ${{ steps.build.outputs.bin_path }}
         shell: bash
+      - name: Upload binary
+        uses: actions/upload-artifact@v2
+        with:
+          name: xcaudit
+          path: ${{ steps.build.outputs.bin_path }}
