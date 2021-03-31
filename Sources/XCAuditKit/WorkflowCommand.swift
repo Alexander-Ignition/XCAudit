@@ -23,7 +23,7 @@ extension WorkflowCommand: CustomStringConvertible {
         var text = "::\(name)"
         if !parameters.isEmpty {
             let params = parameters.map { "\($0.key)=\($0.value)" }.joined(separator: ",")
-            text += " \(params)"
+            text += "  \(params)"
         }
         text += "::\(value)"
         return text
