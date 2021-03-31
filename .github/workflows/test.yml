@@ -22,5 +22,5 @@ jobs:
           swift build --version
         shell: bash
       - name: Build and test
-        run: swift test --enable-code-coverage --disable-automatic-resolution
+        run: make test
         shell: bash
