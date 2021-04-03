@@ -5,7 +5,7 @@ struct XCAudit: ParsableCommand {
     static let configuration = CommandConfiguration(
         commandName: "xcaudit",
         abstract: "Audit Xcode build logs for GitHub Actions",
-        version: "0.1.2")
+        version: "0.1.3")
 
     mutating func run() throws {
         let parser = WorkflowParser()
