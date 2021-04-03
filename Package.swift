@@ -12,9 +12,6 @@ let package = Package(
         .executable(
             name: "xcaudit",
             targets: ["XCAudit"]),
-        .library(
-            name: "XCAuditKit",
-            targets: ["XCAuditKit"]),
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-argument-parser", from: "0.3.0"),

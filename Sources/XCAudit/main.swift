@@ -8,24 +8,13 @@ struct XCAudit: ParsableCommand {
         version: "0.1.2")
 
     mutating func run() throws {
+        let parser = WorkflowParser()
+
         while let line = readLine() {
-            if let command = workflowCommand(from: line) {
+            if let command = parser.parse(line) {
                 print(command)
             }
             print(line)
-        }
-    }
-
-    private func workflowCommand(from line: String) -> WorkflowCommand? {
-        XcodeIssue.parse(line).flatMap { issue -> WorkflowCommand? in
-            switch issue.type {
-            case "warning":
-                return .warning(location: issue.location, message: issue.message)
-            case "error":
-                return .error(location: issue.location, message: issue.message)
-            default:
-                return nil
-            }
         }
     }
 }
